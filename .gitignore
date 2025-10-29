@@ -1,0 +1,25 @@
+# Ignore Python bytecode files
+*.pyc
+__pycache__/
+
+# Ignore virtual environment directories
+venv/
+.env/
+
+# Ignore IDE directories
+.vscode/
+.idea/
+
+# Ignore Logs and data
+*.log
+*.out
+*.err
+*.npy
+*.npz
+*.pkl
+*.h5
+*.hdf5
+*.csv
+*.tsv
+*.png
+*.jpg
