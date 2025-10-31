@@ -272,6 +272,14 @@ class PhysicalQuantity:
             converted_quantity.magnitude, str(converted_quantity.units)
         )
 
+    def value_in(self, unit):
+        """
+        Convert the quantity to a new unit and return the value of the quantity.
+        :param unit: The new unit as a string
+        """
+        converted_quantity = self.quantity.to(unit)
+        return converted_quantity.magnitude
+
     def example(self):
         # Define physical quantities
         c = PhysicalQuantity(299792458, "m/s")  # Speed of light
@@ -311,7 +319,7 @@ class PhysicalQuantity:
 e = PhysicalQuantity(-1.602176634e-19, "coulomb")
 
 # mol to number by Avogadro's number
-mol_to_N = PhysicalQuantity(6e23, "mol**(-1)")
+mol_to_num = PhysicalQuantity(6e23, "mol**(-1)")
 
 # Constants
 
@@ -323,10 +331,9 @@ c = PhysicalQuantity(1, "c")
 u = PhysicalQuantity(931.49410242, "MeV / c**2")
 
 # Boltzmann constant in eV K^-1
-k = PhysicalQuantity(8.617333262145e-5, "eV / kelvin")
-
+kB = PhysicalQuantity(8.617333262145e-5, "eV / kelvin")
 # Boltzmann constant in J K^-1
-kB = PhysicalQuantity(1.380649e-23, "joule / kelvin")
+# kB = PhysicalQuantity(1.380649e-23, "joule / kelvin")
 
 # Planck constant
 h_Planck = PhysicalQuantity(4.135667696e-15, "eV * s")
@@ -405,11 +412,11 @@ if __name__ == "__main__":
     qu = (
         hbar
         * gamma_p
-        * PhysicalQuantity(1, "tesla")
-        / (2 * k * PhysicalQuantity(200, "K"))
+        * PhysicalQuantity(100, "tesla")
+        / (2 * kB * PhysicalQuantity(0.002, "K"))
     )
     print(qu.convert_to(""))
-    pol = np.tanh(qu.convert_to(""))
+    pol = np.tanh(qu)
     print(pol)
 
 
